@@ -1,19 +1,13 @@
+# main.tf
 terraform {
-  backend "remote" {
-    organization = "hashicorp-learn"
+  required_version = ">= 1.1.0"
 
+  cloud {
+    organization = "hashicorp-learn"
     workspaces {
       name = "learn-terraform-pipelines-vault"
     }
   }
-  required_providers {
-    helm = {
-      source  = "hashicorp/helm"
-      version = "~> 2.0.2"
-    }
-  }
-
-  required_version = "~> 0.14"
 }
 
 data "terraform_remote_state" "cluster" {
